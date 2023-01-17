@@ -1,0 +1,18 @@
+.FormStep {
+    width: 100%;
+    height: 100%;
+}
+
+.PersonalInfo * {
+    margin: 5px;
+    padding: 5px;
+}
+
+.PersonalInfo form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    
+}
