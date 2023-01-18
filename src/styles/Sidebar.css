@@ -1,3 +1,19 @@
+.Sidebar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+picture {
+    display: grid;
+    grid-row: 1;
+    grid-column: 1 / span 3;
+    background: yellow;
+}
+
+img {
+    width: 100%;
+} 
+
 @media only screen and (min-width: 1080px) {
 
     .Sidebar-desktop {

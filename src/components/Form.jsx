@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/Form.css";
-import { FormStep } from "./FormStep";
+import { FormGroup } from "./FormGroup";
+import { FormProgress } from "./FormProgress";
 import { Sidebar } from "./Sidebar";
 
 export const Form = () => {
@@ -10,7 +11,8 @@ export const Form = () => {
     return (
         <div className="Form">
             <Sidebar />
-            <FormStep step={formStep} />
+            <FormProgress />
+            <FormGroup step={formStep} />
         </div>
     );
 }

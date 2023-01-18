@@ -1,0 +1,60 @@
+.FormProgress {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 1rem;
+}
+
+.FormStep {
+    color: white;
+    display: grid; 
+}
+
+.FormStep h4 {
+    border: 1px solid white;
+    border-radius: 50%; 
+    display: inline;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 2rem; 
+    line-height: 2rem; 
+    text-align: center; 
+    width: 2rem; 
+}
+
+.FormStep :is(h5, h6) {
+    display: none;
+}
+
+@media only screen and (min-width: 1080px) {
+
+    .FormProgress {
+        grid-auto-flow: row;
+    }
+
+    .FormStep {
+        align-items: center;
+        column-gap: 0.7rem;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: auto 1fr; 
+        margin: 0 0 1rem;
+    }
+
+    .FormStep h5 {
+        display: block;
+        grid-row: 2;
+        grid-column: 2;
+        line-height: 1;
+        text-transform: uppercase;
+        word-spacing: 0.15rem;
+    }
+    
+    .FormStep h6 {
+        display: block;
+        color: hsl(243, 100%, 62%);
+        grid-row: 1;
+        grid-column: 2;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+}
