@@ -1,18 +1,18 @@
 import { useState } from "react";
 import "../styles/Form.css";
+import { SubmitButton } from "./FormControls";
 import { FormGroup } from "./FormGroup";
-import { FormProgress } from "./FormProgress";
-import { Sidebar } from "./Sidebar";
 
 export const Form = () => {
+  const [formStep, setFormStep] = useState(0);
 
-    const [formStep, setFormStep] = useState(0);
+  return (
+    <div className="Form">
+      <FormGroup step={formStep} />
 
-    return (
-        <div className="Form">
-            <Sidebar />
-            <FormProgress />
-            <FormGroup step={formStep} />
-        </div>
-    );
-}
+      <div className="ButtonWrapper">
+        <SubmitButton text="Next Step" />
+      </div>
+    </div>
+  );
+};

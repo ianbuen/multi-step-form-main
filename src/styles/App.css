@@ -1,13 +1,30 @@
-@media only scree and (min-width: 1080px) {
+@media only screen and (min-width: 1080px) {
 
   .App {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    background-color: hsl(217, 100%, 97%);
+      display: grid;
+      height: fit-content;
+      grid-template-rows: auto;
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      box-shadow: 0 10px 15px #0001;
+      grid-template-columns: max-content 5vw max-content 5vw;
+  }
+
+  header {
+      grid-column: 1;
+  }
+
+  main {
+      grid-column: 3;
+      height: 100%;
+  }
+
+  footer {
+      position: absolute;
+      bottom: 5%;
+      justify-self: center;
   }
 }
 
-@import "AppMobile.css"
+@import "AppMobile.css";

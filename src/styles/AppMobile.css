@@ -17,9 +17,19 @@
 }
 
 .App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
     font-family: 'Ubuntu', serif;
     height: 100%;
+    grid-template-rows: 100px max-content; 
+}
+
+.Sidebar { 
+    display: grid;
+}
+
+.FormProgress { 
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    justify-self: center;
+    padding-top: 30px;
 }

@@ -1,0 +1,36 @@
+input {
+    margin-bottom: 8px;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 1px solid hsl(229, 24%, 87%);
+    padding: 10px 15px;
+}
+
+label {
+    color: hsl(213, 96%, 18%);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.SubmitButton {
+    width: fit-content;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: hsl(213, 96%, 18%);
+    color: white;
+    font-weight: 500;
+    margin: 0;
+}
+
+@media only screen and (min-width: 1080px) {
+
+    label {
+        margin: 15px 0 5px;
+    }
+
+    .SubmitButton {
+        padding: 12px 25px;
+    }
+}

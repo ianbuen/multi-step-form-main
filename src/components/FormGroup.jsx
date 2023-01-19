@@ -1,4 +1,5 @@
 import "../styles/FormGroup.css";
+import { InputField, SubmitButton } from "./FormControls";
 
 const PersonalInfo = () => {
   return (
@@ -7,16 +8,10 @@ const PersonalInfo = () => {
         <h1>Personal Info</h1>
         <p>Please provide your name, email address, and phone number.</p>
 
-        <label for="name">Name</label>
-        <input type="text" name="name" placeholder="e.g. Stephen King" />
-        
-        <label for="email">Email Address</label>
-        <input type="email" name="email" placeholder="e.g. stephenking@lorem.com" />
+        <InputField type="text" name="name" label="Name" placeholder="e.g. Stephen King" />
+        <InputField type="email" name="email" label="Email Address" placeholder="e.g. stephenking@lorem.com" />
+        <InputField type="tel" name="telephone" label="Phone Number" placeholder="e.g. +1 234 567 890" /> 
 
-        <label for="telephone">Phone Number</label>
-        <input type="tel" name="telephone" placeholder="e.g. +1 234 567 890" />
-
-        {/* <input type="submit" value="Next Step" /> */}
       </form>
     </div>
   );

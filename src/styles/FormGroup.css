@@ -1,9 +1,15 @@
+h1 {
+    color: hsl(213, 96%, 18%);
+}
+
+p {
+    color: hsl(230, 7%, 51%);
+    margin-bottom: 10px;
+}
+
 .FormGroup {
-    background: red;
     border-radius: 10px;
-    margin: 0 20px;
-    padding: 20px;
-    box-shadow: 0 10px 15px #0005;
+    box-shadow: 0 10px 15px #0001;
 }
 
 .PersonalInfo form {
@@ -11,4 +17,13 @@
     flex-direction: column;
 }
 
-input {}
+@media only screen and (min-width: 1080px) {
+    
+    p {
+        margin: 5px 0 25px;
+    }
+
+    .FormGroup {
+        box-shadow: none;
+    }
+}

@@ -6,13 +6,21 @@
   margin: 0;
 }
 
-html, body {
+html, body, #root {
   height: 100%;
+}
+
+#root {
+  background: hsl(217, 100%, 97%);
 }
 
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+header, main, footer {
+  height: fit-content;
 }
 
 img, picture, video, canvas, svg {
@@ -33,10 +41,25 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .attribution {
+  margin-top: 15px;
   font-size: 11px;
   text-align: center;
 }
 
 .attribution a {
   color: hsl(228, 45%, 44%);
+}
+
+@media only screen and (orientation: landscape) and (max-width: 1079px) {
+  #root {
+    min-height: 175%;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

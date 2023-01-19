@@ -1,16 +1,44 @@
 .Form {
     display: grid;
-    grid-auto-flow: row;
+}
+
+.FormGroup {
+    background: white; 
+    grid-column: 1;
+    margin: 0 20px;
+    padding: 25px;
+}
+
+.ButtonWrapper {
+    position: fixed;
+    background: hsl(231, 100%, 99%);
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    bottom: 0; 
+    grid-column: 1;
 }
 
 @media only screen and (min-width: 1080px) {
 
-    /* .Form {
-        background: white;
-        display: flex;
-        align-items: stretch;
+    .Form {
         height: 100%;
-        border-radius: 20px;
-    } */
+    }
 
+    .FormGroup {
+        width: 100%;
+        margin: 0;
+        padding: 2vw 0;
+    }   
+
+    .ButtonWrapper {
+        position: relative;
+        align-self: end;
+        justify-self: end;
+        background: none;
+        width: fit-content;
+        padding-right: 0;
+    }
 }
