@@ -19,7 +19,30 @@ const PersonalInfo = () => {
 const SelectPlan = () => {
   return (
     <div className="SelectPlan">
-      <h1>Step 2</h1>
+      <form>
+        <h1>Select your plan</h1>
+        <p>You have the option of monthly or yearly billing.</p>
+
+        <div className="CardSelect">
+          <div className="Card">
+            <h3>Arcade</h3>
+            <p>$9/mo</p>
+          </div>
+
+          <div className="Card">
+            <h3>Advanced</h3>
+            <p>$12/mo</p>
+          </div>
+          
+          <div className="Card">
+            <h3>Pro</h3>
+            <p>$15/mo</p>
+          </div>
+        </div>
+
+        Monthly
+        Yearly
+      </form>
     </div>
   );
 };

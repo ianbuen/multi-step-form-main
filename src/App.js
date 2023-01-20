@@ -6,7 +6,7 @@ import { useState } from "react";
 
 function App() {
 
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
 
   return (
     <div className="App">
