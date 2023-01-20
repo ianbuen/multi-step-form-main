@@ -1,5 +1,5 @@
 import "../styles/FormGroup.css";
-import { InputField, SubmitButton } from "./FormControls";
+import { InputField } from "./FormControls";
 
 const PersonalInfo = () => {
   return (
@@ -11,22 +11,51 @@ const PersonalInfo = () => {
         <InputField type="text" name="name" label="Name" placeholder="e.g. Stephen King" />
         <InputField type="email" name="email" label="Email Address" placeholder="e.g. stephenking@lorem.com" />
         <InputField type="tel" name="telephone" label="Phone Number" placeholder="e.g. +1 234 567 890" /> 
-
       </form>
     </div>
   );
 };
 
-const SelectPlan = () => {};
+const SelectPlan = () => {
+  return (
+    <div className="SelectPlan">
+      <h1>Step 2</h1>
+    </div>
+  );
+};
 
-const AddOns = () => {};
+const AddOns = () => {
+  return (
+    <div className="AddOns">
+      <h1>Step 3</h1>
+    </div>
+  );
+};
 
-const Summary = () => {};
+const Summary = () => {
+  return (
+    <div className="Summary">
+      <h1>Step 4</h1>
+    </div>
+  );
+};
 
-export const FormGroup = ({ step }) => {
+const GetStep = (step) => {
+
+  switch (step) {
+    case 2: return <SelectPlan />; 
+    case 3: return <AddOns />; 
+    case 4: return <Summary />; 
+    default: return <PersonalInfo />;
+  }
+}
+
+export const FormGroup = ({state: {step}}) => {
   return (
     <div className="FormGroup">
-      <PersonalInfo />
+      
+      {GetStep(step)}
+      
     </div>
   );
 };

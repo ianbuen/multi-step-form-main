@@ -9,6 +9,7 @@
       border-radius: 15px;
       box-shadow: 0 10px 15px #0001;
       grid-template-columns: max-content 5vw max-content 5vw;
+      /* margin: 20px 0; */
   }
 
   header {
@@ -22,7 +23,7 @@
 
   footer {
       position: absolute;
-      bottom: 5%;
+      bottom: 10px;
       justify-self: center;
   }
 }

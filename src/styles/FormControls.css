@@ -13,7 +13,7 @@ label {
     margin-top: 8px;
 }
 
-.SubmitButton {
+.NextButton {
     width: fit-content;
     padding: 10px 15px;
     border: none;
@@ -24,13 +24,18 @@ label {
     margin: 0;
 }
 
+.BackLink {
+    color: hsl(231, 11%, 63%);
+    font-weight: 500;
+}
+
 @media only screen and (min-width: 1080px) {
 
     label {
         margin: 15px 0 5px;
     }
 
-    .SubmitButton {
+    .NextButton {
         padding: 12px 25px;
     }
 }

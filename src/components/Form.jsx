@@ -1,17 +1,16 @@
-import { useState } from "react";
 import "../styles/Form.css";
-import { SubmitButton } from "./FormControls";
+import { BackLink, NextButton } from "./FormControls";
 import { FormGroup } from "./FormGroup";
 
-export const Form = () => {
-  const [formStep, setFormStep] = useState(0);
+export const Form = ({state}) => {
 
   return (
     <div className="Form">
-      <FormGroup step={formStep} />
+      <FormGroup state={state} />
 
       <div className="ButtonWrapper">
-        <SubmitButton text="Next Step" />
+        <BackLink text="Go Back" state={state} />
+        <NextButton text="Next Step" state={state} />
       </div>
     </div>
   );
