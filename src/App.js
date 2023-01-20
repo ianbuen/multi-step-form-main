@@ -11,8 +11,6 @@ function App() {
   return (
     <div className="App">
 
-      <h1 style={{'position': 'absolute'}}>{step}</h1>
-
       <header>
         <Sidebar>
           <FormProgress state={{'step': step}} />

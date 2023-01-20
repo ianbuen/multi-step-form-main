@@ -1,11 +1,16 @@
 import "../styles/FormGroup.css";
-import { InputField } from "./FormControls";
+import { CardSelect, InputField } from "./FormControls";
+
+import arcade from "../assets/images/icon-arcade.svg";
+import advanced from "../assets/images/icon-advanced.svg";
+import pro from "../assets/images/icon-pro.svg";
+import { useState } from "react";
 
 const PersonalInfo = () => {
   return (
     <div className="PersonalInfo">
       <form>
-        <h1>Personal Info</h1>
+        <h2>Personal Info</h2>
         <p>Please provide your name, email address, and phone number.</p>
 
         <InputField type="text" name="name" label="Name" placeholder="e.g. Stephen King" />
@@ -17,28 +22,36 @@ const PersonalInfo = () => {
 };
 
 const SelectPlan = () => {
+
+  const [selectedPlan, setSelectedPlan] = useState(1);
+
+  const plans = [
+    {
+      image: { url: arcade, alt: "arcade icon" },
+      plan: 'Arcade',
+      price: '$9/mo'
+    },
+
+    {
+      image: { url: advanced, alt: "advanced icon" },
+      plan: 'Advanced',
+      price: '$12/mo'
+    },
+
+    {
+      image: { url: pro, alt: "pro icon" },
+      plan: 'Pro',
+      price: '$15/mo'
+    }
+  ]
+
   return (
     <div className="SelectPlan">
       <form>
-        <h1>Select your plan</h1>
+        <h2>Select your plan</h2>
         <p>You have the option of monthly or yearly billing.</p>
 
-        <div className="CardSelect">
-          <div className="Card">
-            <h3>Arcade</h3>
-            <p>$9/mo</p>
-          </div>
-
-          <div className="Card">
-            <h3>Advanced</h3>
-            <p>$12/mo</p>
-          </div>
-          
-          <div className="Card">
-            <h3>Pro</h3>
-            <p>$15/mo</p>
-          </div>
-        </div>
+        <CardSelect items={plans} />
 
         Monthly
         Yearly

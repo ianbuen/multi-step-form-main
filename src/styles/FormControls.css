@@ -1,3 +1,5 @@
+
+
 input {
     margin-bottom: 8px;
     font-weight: 500;
@@ -29,6 +31,31 @@ label {
     font-weight: 500;
 }
 
+.CardSelect {
+    display: grid;
+    row-gap: 10px;
+}
+
+.Card {
+    display: grid;
+    grid-template-columns: 20% auto;
+    border: 1px solid hsl(229, 24%, 87%);
+    border-radius: 10px;
+    padding: 10px 15px;
+    align-items: center;
+    column-gap: 15px;
+}
+
+.CardDetails {
+    display: grid;
+    align-items: center;
+    padding: 5px 0 0;
+} 
+
+.CardDetails h4 {
+    font-weight: 500;
+}
+
 @media only screen and (min-width: 1080px) {
 
     label {
@@ -37,5 +64,14 @@ label {
 
     .NextButton {
         padding: 12px 25px;
+    }
+
+    .CardSelect {
+        grid-template-columns: repeat(3, auto);
+        column-gap: 15px;
+    }
+
+    .Card {
+        grid-template-columns: 1fr;
     }
 }

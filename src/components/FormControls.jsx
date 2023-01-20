@@ -42,24 +42,26 @@ export const BackLink = ({ text, state }) => {
 };
 
 
-export const CardSelect = () => {
+export const Card = ({image, plan, price}) => {
+    return (
+        <div className="Card">
+            <img src={image.url} alt={image.alt} />
+            <div className="CardDetails">
+                <h4>{plan}</h4>
+                <p>{price}</p>
+            </div>
+        </div>
+    );
+};
+
+
+export const CardSelect = ({items}) => {
 
     return (
         <div className="CardSelect">
-          <div className="Card">
-            <h3>Arcade</h3>
-            <p>$9/mo</p>
-          </div>
-
-          <div className="Card">
-            <h3>Advanced</h3>
-            <p>$12/mo</p>
-          </div>
-          
-          <div className="Card">
-            <h3>Pro</h3>
-            <p>$15/mo</p>
-          </div>
+          {items?.map((item) => (
+            <Card image={item.image} plan={item.plan} price={item.price} />
+          ))}
         </div>
     );
 };

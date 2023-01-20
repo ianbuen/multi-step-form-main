@@ -52,7 +52,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media only screen and (orientation: landscape) and (max-width: 1079px) {
   #root {
-    min-height: 175%;
+    min-height: 225%;
   }
 }
 

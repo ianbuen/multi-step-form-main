@@ -1,4 +1,4 @@
-h1 {
+h2 {
     color: hsl(213, 96%, 18%);
 }
 
@@ -22,8 +22,9 @@ p {
     p {
         margin: 5px 0 25px;
     }
-
+    
     .FormGroup {
+        min-width: 600px;
         box-shadow: none;
     }
 }

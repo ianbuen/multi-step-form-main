@@ -8,8 +8,7 @@
       padding: 15px;
       border-radius: 15px;
       box-shadow: 0 10px 15px #0001;
-      grid-template-columns: max-content 5vw max-content 5vw;
-      /* margin: 20px 0; */
+      grid-template-columns: max-content 4vw max-content 4vw;
   }
 
   header {
