@@ -1,5 +1,5 @@
 import "../styles/FormGroup.css";
-import { CardSelect, InputField } from "./FormControls";
+import { PlanSelect, InputField, ToggleSwitch, AddOnsSelect } from "./FormControls";
 
 import arcade from "../assets/images/icon-arcade.svg";
 import advanced from "../assets/images/icon-advanced.svg";
@@ -24,6 +24,7 @@ const PersonalInfo = () => {
 const SelectPlan = () => {
 
   const [selectedPlan, setSelectedPlan] = useState(1);
+  const [checked, setChecked] = useState(false);
 
   const plans = [
     {
@@ -51,19 +52,45 @@ const SelectPlan = () => {
         <h2>Select your plan</h2>
         <p>You have the option of monthly or yearly billing.</p>
 
-        <CardSelect items={plans} />
+        <PlanSelect items={plans} yearly={checked} />
 
-        Monthly
-        Yearly
+        <ToggleSwitch toggleState={{ 'checked': checked , 'setChecked': setChecked }} >
+          <p>Monthly</p>
+          <p>Yearly</p>
+        </ToggleSwitch>
       </form>
     </div>
   );
 };
 
 const AddOns = () => {
+
+  const addOns = [
+    {
+      name: 'Online service',
+      desc: 'Access to multiplayer games',
+      price: 1,
+    },
+    {
+      name: 'Larger storage',
+      desc: 'Extra 1TB of cloud save',
+      price: 2,
+    },
+    {
+      name: 'Customizable Profile',
+      desc: 'Custom theme on your profile',
+      price: 2,
+    },
+  ];
+
   return (
     <div className="AddOns">
-      <h1>Step 3</h1>
+      <form>
+        <h2>Pick add-ons</h2>
+        <p>Add-ons help enhance your gaming experience.</p>
+
+        <AddOnsSelect items={addOns} yearly={false} />
+      </form>
     </div>
   );
 };

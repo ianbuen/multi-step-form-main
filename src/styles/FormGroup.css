@@ -1,10 +1,12 @@
 h2 {
     color: hsl(213, 96%, 18%);
+    font-size: 1.45rem;
 }
 
 p {
     color: hsl(230, 7%, 51%);
     margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .FormGroup {
