@@ -3,22 +3,24 @@ import { Form } from "./components/Form";
 import { Sidebar } from "./components/Sidebar";
 import { FormProgress } from "./components/FormProgress";
 import { useState } from "react";
+import { useStateValue } from "./StateProvider";
 
 function App() {
 
-  const [step, setStep] = useState(3);
+  const [state] = useStateValue();
 
   return (
     <div className="App">
 
       <header>
         <Sidebar>
-          <FormProgress state={{'step': step}} />
+          <FormProgress />
         </Sidebar>
+      <p style={{color: 'white', backdropFilter: 'blur(100px)', position: 'absolute', left: 0, top: 0}} >{`${JSON.stringify(state)}\n`}</p>
       </header>
 
       <main>
-        <Form state={{'step': step, 'setStep': setStep}} />
+        <Form />
       </main>
 
       <footer>

@@ -1,3 +1,4 @@
+import { useStateValue } from "../StateProvider";
 import "../styles/FormProgress.css";
 
 const FormStep = ({ value, text, isActive }) => {
@@ -11,7 +12,10 @@ const FormStep = ({ value, text, isActive }) => {
   );
 }; 
 
-export const FormProgress = ({ state: { step } }) => {
+export const FormProgress = () => {
+
+  const [{step}] = useStateValue();
+
   const steps = ["Your info", "Select plan", "Add-ons", "Summary"];
 
   return (

@@ -5,17 +5,33 @@ import arcade from "../assets/images/icon-arcade.svg";
 import advanced from "../assets/images/icon-advanced.svg";
 import pro from "../assets/images/icon-pro.svg";
 import { useState } from "react";
+import { useStateValue } from "../StateProvider";
+import { useEffect } from "react";
 
 const PersonalInfo = () => {
+
+  const [{ info }, dispatch] = useStateValue();
+
+  const handleChange = ({target: {name, value}}) => {
+
+      let newInfo = {...info};
+      newInfo[name] = value;
+
+      dispatch({
+        type: "SET_INFO",
+        info: newInfo,
+      });
+  };
+
   return (
     <div className="PersonalInfo">
       <form>
         <h2>Personal Info</h2>
         <p>Please provide your name, email address, and phone number.</p>
 
-        <InputField type="text" name="name" label="Name" placeholder="e.g. Stephen King" />
-        <InputField type="email" name="email" label="Email Address" placeholder="e.g. stephenking@lorem.com" />
-        <InputField type="tel" name="telephone" label="Phone Number" placeholder="e.g. +1 234 567 890" /> 
+        <InputField type="text" name="name" label="Name" placeholder="e.g. Stephen King" value={info.name} onChange={handleChange} />
+        <InputField type="email" name="email" label="Email Address" placeholder="e.g. stephenking@lorem.com" value={info.email} onChange={handleChange} />
+        <InputField type="tel" name="telephone" label="Phone Number" placeholder="e.g. +1 234 567 890" value={info.phone} onChange={handleChange} /> 
       </form>
     </div>
   );
@@ -23,28 +39,35 @@ const PersonalInfo = () => {
 
 const SelectPlan = () => {
 
-  const [selectedPlan, setSelectedPlan] = useState(1);
-  const [checked, setChecked] = useState(false);
+  const [{plan}, dispatch] = useStateValue();
+  const { isYearly } = plan;
 
   const plans = [
     {
       image: { url: arcade, alt: "arcade icon" },
       plan: 'Arcade',
-      price: '$9/mo'
+      price: '9'
     },
 
     {
       image: { url: advanced, alt: "advanced icon" },
       plan: 'Advanced',
-      price: '$12/mo'
+      price: '12'
     },
 
     {
       image: { url: pro, alt: "pro icon" },
       plan: 'Pro',
-      price: '$15/mo'
+      price: '15'
     }
   ]
+
+  const setToggle = () => {
+      dispatch({
+        type: "SET_PLAN",
+        plan: {...plan, isYearly: !isYearly}
+      });
+  };
 
   return (
     <div className="SelectPlan">
@@ -52,18 +75,20 @@ const SelectPlan = () => {
         <h2>Select your plan</h2>
         <p>You have the option of monthly or yearly billing.</p>
 
-        <PlanSelect items={plans} yearly={checked} />
+        <PlanSelect items={plans} yearly={isYearly} />
 
-        <ToggleSwitch toggleState={{ 'checked': checked , 'setChecked': setChecked }} >
+        <ToggleSwitch checked={isYearly} onChange={setToggle} >
           <p>Monthly</p>
           <p>Yearly</p>
         </ToggleSwitch>
-      </form>
+      </form> 
     </div>
   );
 };
 
 const AddOns = () => {
+
+  const [{plan: {isYearly}}] = useStateValue();
 
   const addOns = [
     {
@@ -89,7 +114,7 @@ const AddOns = () => {
         <h2>Pick add-ons</h2>
         <p>Add-ons help enhance your gaming experience.</p>
 
-        <AddOnsSelect items={addOns} yearly={false} />
+        <AddOnsSelect items={addOns} yearly={isYearly} />
       </form>
     </div>
   );
@@ -98,7 +123,10 @@ const AddOns = () => {
 const Summary = () => {
   return (
     <div className="Summary">
-      <h1>Step 4</h1>
+      <form>
+        <h2>Finishing up</h2>
+        <p>Double-check everything looks OK before confirming.</p>
+      </form>
     </div>
   );
 };
@@ -113,7 +141,10 @@ const GetStep = (step) => {
   }
 }
 
-export const FormGroup = ({state: {step}}) => {
+export const FormGroup = () => {
+
+  const [{step}] = useStateValue();
+
   return (
     <div className="FormGroup">
       

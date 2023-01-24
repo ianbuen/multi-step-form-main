@@ -1,55 +1,52 @@
 import { Children } from "react";
+import { useStateValue } from "../StateProvider";
 import "../styles/FormControls.css";
 
-export const InputField = ({type, name, label, placeholder}) => {
+export const InputField = ({type, name, label, placeholder, onChange}) => {
     return (
         <>
             <label htmlFor={name}>{label}</label>
-            <input type={type} name={name} placeholder={placeholder} />
+            <input type={type} name={name} placeholder={placeholder} onChange={onChange} />
         </>
     );
 };
 
-export const NextButton = ({ text, state }) => {
+export const NextButton = ({ text, onClick }) => {
 
-    const goNext = () => {
+    // const goNext = () => {
 
-        let {step, setStep} = state;
+    //     let {step, setStep} = state;
         
-        setStep(step <= 3 ? step + 1 : step);
-    }
+    //     setStep(step <= 3 ? step + 1 : step);
+    // }
 
     return (
         <>
-            <input className="NextButton" type="submit" value={text} onClick={goNext}/>
+            {/* <input className="NextButton" type="submit" value={text} onClick={goNext}/> */}
+            <input className="NextButton" type="submit" value={text} onClick={onClick} />
         </>
     );
 };
 
-export const BackLink = ({ text, state }) => {
+export const BackLink = ({ text, onClick }) => { 
 
-    const goBack = () => {
-
-        let {step, setStep} = state;
-        
-        setStep(step > 1 ? step - 1 : step);
-    }
+    const [{step}] = useStateValue();
 
     return (
         <>
-            {state?.step > 1 ? <h3 className="BackLink" onClick={goBack}>{text}</h3> : <></>}
+            {step > 1 ? <h3 className="BackLink" onClick={onClick}>{text}</h3> : <></>}
         </>
     );
 };
 
 
-export const PlanCard = ({image, plan, price, yearly}) => {
+export const PlanCard = ({image, plan, price, yearly, onClick}) => {
     return (
-        <div className="Card">
+        <div className="Card" onClick={onClick}>
             <img src={image.url} alt={image.alt} />
             <div className="CardDetails">
                 <h4>{plan}</h4>
-                <p>{price}</p>
+                <p>{`$${price}/mo`}</p>
                 {yearly && <h5>2 months free</h5>}
             </div>
         </div>
@@ -71,16 +68,30 @@ export const AddOnCard = ({addon, desc, price, yearly}) => {
 
 export const PlanSelect = ({items, yearly}) => {
 
+    const [{plan}, dispatch] = useStateValue();
+
+    const selectPlan = (index) => {
+        dispatch({
+            type: 'SET_PLAN',
+            plan: {...plan, type: items[index]}
+        });
+
+        console.log(plan);
+    };
+
     return (
         <div className="CardSelect">
           {items?.map((item, index) => (
-            <PlanCard key={`card-${index}`} image={item.image} plan={item.plan} price={item.price} yearly={yearly} />
+            <PlanCard key={`card-${index}`} image={item.image} plan={item.plan} price={item.price} yearly={yearly} onClick={() => selectPlan(index)} />
           ))}
         </div>
     );
 };
 
 export const AddOnsSelect = ({items, yearly}) => {
+
+    const [{plan}, dispatch] = useStateValue(); 
+
     return (
         <div className="CardSelect">
             {items?.map((item, index) => (
@@ -90,15 +101,11 @@ export const AddOnsSelect = ({items, yearly}) => {
     );
 };
 
-export const ToggleSwitch = ({toggleState: { checked, setChecked }, children}) => {
-
-    const setToggleState = () => {
-        setChecked(!checked);
-    }
+export const ToggleSwitch = ({checked, onChange, children}) => { 
 
     return (
         <div className="ToggleSwitch">
-            <input type="checkbox" className="Switch" checked={checked} onChange={setToggleState} />
+            <input type="checkbox" className="Switch" checked={checked} onChange={onChange} />
             {children}
         </div>
     );
