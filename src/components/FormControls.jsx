@@ -1,28 +1,23 @@
-import { Children } from "react";
+import { useEffect } from "react";
 import { useStateValue } from "../StateProvider";
 import "../styles/FormControls.css";
 
-export const InputField = ({type, name, label, placeholder, onChange}) => {
+export const InputField = ({type, name, label, placeholder, onChange, value}) => {
+
+    value = value ? value : '';
+
     return (
         <>
             <label htmlFor={name}>{label}</label>
-            <input type={type} name={name} placeholder={placeholder} onChange={onChange} />
+            <input type={type} name={name} placeholder={placeholder} onChange={onChange} value={value} />
         </>
     );
 };
 
-export const NextButton = ({ text, onClick }) => {
-
-    // const goNext = () => {
-
-    //     let {step, setStep} = state;
-        
-    //     setStep(step <= 3 ? step + 1 : step);
-    // }
+export const NextButton = ({ text, onClick }) => { 
 
     return (
         <>
-            {/* <input className="NextButton" type="submit" value={text} onClick={goNext}/> */}
             <input className="NextButton" type="submit" value={text} onClick={onClick} />
         </>
     );
@@ -40,12 +35,12 @@ export const BackLink = ({ text, onClick }) => {
 };
 
 
-export const PlanCard = ({image, plan, price, yearly, onClick}) => {
+export const PlanCard = ({image, name, price, yearly, onClick}) => {
     return (
         <div className="Card" onClick={onClick}>
             <img src={image.url} alt={image.alt} />
             <div className="CardDetails">
-                <h4>{plan}</h4>
+                <h4>{name}</h4>
                 <p>{`$${price}/mo`}</p>
                 {yearly && <h5>2 months free</h5>}
             </div>
@@ -53,11 +48,11 @@ export const PlanCard = ({image, plan, price, yearly, onClick}) => {
     );
 };
 
-export const AddOnCard = ({addon, desc, price, yearly}) => {
+export const AddOnCard = ({addon, desc, price, yearly, onChange}) => {
 
     return (
         <div className="AddOn">
-            <input type="checkbox" className="AddOnTick" />
+            <input type="checkbox" className="AddOnTick" onChange={onChange} />
             <h4 className="AddOnName">{addon}</h4>
             <p className="AddOnDesc">{desc}</p>
             <p className="AddOnPrice">{ yearly ? `+$${price * 10}/yr` : `+$${price}/mo` }</p>
@@ -69,20 +64,38 @@ export const AddOnCard = ({addon, desc, price, yearly}) => {
 export const PlanSelect = ({items, yearly}) => {
 
     const [{plan}, dispatch] = useStateValue();
+    const { isYearly, addons, index : idPlan } = plan; 
 
-    const selectPlan = (index) => {
+
+    useEffect(() => {
+        
+    }, []);
+
+
+    const handleClick = (evt, index) => {
+        const {currentTarget: selectedCard} = evt;
+        const allCards = [...selectedCard.parentElement.children];
+
+        allCards.forEach(card => card.classList.remove("Selected"))
+        
+        let updatedPlan = { isYearly, addons };
+        
+        if (index !== idPlan) {
+            updatedPlan = { ...items[index], index: index, ...updatedPlan};
+            selectedCard.classList.toggle("Selected");
+        } 
+
         dispatch({
             type: 'SET_PLAN',
-            plan: {...plan, type: items[index]}
+            plan: updatedPlan,
         });
-
-        console.log(plan);
     };
 
+
     return (
-        <div className="CardSelect">
+        <div className="CardSelection">
           {items?.map((item, index) => (
-            <PlanCard key={`card-${index}`} image={item.image} plan={item.plan} price={item.price} yearly={yearly} onClick={() => selectPlan(index)} />
+            <PlanCard key={`card-${index}`} image={item.image} name={item.name} price={item.price} yearly={yearly} onClick={(evt) => {handleClick(evt, index)}} />
           ))}
         </div>
     );
@@ -91,11 +104,29 @@ export const PlanSelect = ({items, yearly}) => {
 export const AddOnsSelect = ({items, yearly}) => {
 
     const [{plan}, dispatch] = useStateValue(); 
+    const { addons } = plan;
+
+    const handleChange = (index) => {
+        
+        let updatedAddons = [...addons]; // make a copy of existing addons
+
+        addons.forEach(addon => {
+            if (addon.index === index) { // if select addon is reselected, remove
+                updatedAddons.splice(addon.index, 1);
+            }
+        });
+
+        dispatch({
+            type: "SET_PLAN",
+            // plan: {...plan, addons: [...addons, updatedAddons ] }
+            plan: {...plan, addons: [...addons, updatedAddons ]}
+        });
+    };
 
     return (
-        <div className="CardSelect">
+        <div className="CardSelection">
             {items?.map((item, index) => (
-            <AddOnCard key={`card-${index}`} addon={item.name} desc={item.desc} price={item.price} yearly={yearly} />
+            <AddOnCard key={`card-${index}`} addon={item.name} desc={item.desc} price={item.price} yearly={yearly} onChange={() => {handleChange(index)}} />
           ))}
         </div>
     );

@@ -29,7 +29,7 @@ label {
     font-weight: 500;
 }
 
-.CardSelect {
+.CardSelection {
     display: grid;
     row-gap: 10px;
     margin-top: 20px;
@@ -71,6 +71,16 @@ label {
 .CardDetails h5 {
     color: hsl(213, 96%, 18%);
     font-weight: 400;
+}
+
+.Selected {
+    border: 1px solid hsl(243, 100%, 62%);
+    background: hsl(217, 100%, 97%);
+    animation: bob 200ms linear;
+}
+
+@keyframes bob {
+    0% { transform: scale(1); } 50% {transform: scale(1.1);} 100% { transform: scale(1); }
 }
 
 .ToggleSwitch {
@@ -238,7 +248,7 @@ label {
         padding: 12px 25px;
     }
 
-    .CardSelect {
+    .CardSelection {
         grid-template-columns: repeat(3, auto);
         column-gap: 15px;
     }

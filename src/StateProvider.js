@@ -5,10 +5,9 @@ export const StateContext = createContext();
 
 // State
 export const initialState = {
-    step: 2,
+    step: 3,
     info: {},
     plan: {
-        type: {},
         isYearly: false,
         addons: [],
     },

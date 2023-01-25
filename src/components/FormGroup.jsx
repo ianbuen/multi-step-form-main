@@ -4,16 +4,14 @@ import { PlanSelect, InputField, ToggleSwitch, AddOnsSelect } from "./FormContro
 import arcade from "../assets/images/icon-arcade.svg";
 import advanced from "../assets/images/icon-advanced.svg";
 import pro from "../assets/images/icon-pro.svg";
-import { useState } from "react";
 import { useStateValue } from "../StateProvider";
-import { useEffect } from "react";
 
-const PersonalInfo = () => {
+const PersonalInfo = ({children}) => {
 
   const [{ info }, dispatch] = useStateValue();
 
   const handleChange = ({target: {name, value}}) => {
-
+ 
       let newInfo = {...info};
       newInfo[name] = value;
 
@@ -31,7 +29,7 @@ const PersonalInfo = () => {
 
         <InputField type="text" name="name" label="Name" placeholder="e.g. Stephen King" value={info.name} onChange={handleChange} />
         <InputField type="email" name="email" label="Email Address" placeholder="e.g. stephenking@lorem.com" value={info.email} onChange={handleChange} />
-        <InputField type="tel" name="telephone" label="Phone Number" placeholder="e.g. +1 234 567 890" value={info.phone} onChange={handleChange} /> 
+        <InputField type="tel" name="telephone" label="Phone Number" placeholder="e.g. +1 234 567 890" value={info.telephone} onChange={handleChange} /> 
       </form>
     </div>
   );
@@ -45,19 +43,19 @@ const SelectPlan = () => {
   const plans = [
     {
       image: { url: arcade, alt: "arcade icon" },
-      plan: 'Arcade',
+      name: 'Arcade',
       price: '9'
     },
 
     {
       image: { url: advanced, alt: "advanced icon" },
-      plan: 'Advanced',
+      name: 'Advanced',
       price: '12'
     },
 
     {
       image: { url: pro, alt: "pro icon" },
-      plan: 'Pro',
+      name: 'Pro',
       price: '15'
     }
   ]
