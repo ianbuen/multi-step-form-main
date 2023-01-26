@@ -44,6 +44,11 @@ label {
     padding: 10px 15px;
     align-items: center;
     column-gap: 15px;
+    user-select: none;
+}
+
+.Card:hover {
+    cursor: pointer;
 }
 
 .Card img {
@@ -74,7 +79,7 @@ label {
 }
 
 .Selected {
-    border: 1px solid hsl(243, 100%, 62%);
+    border: 1px solid hsl(243, 62%, 40%);
     background: hsl(217, 100%, 97%);
     animation: bob 200ms linear;
 }
@@ -145,31 +150,7 @@ label {
     grid-template-rows: 10px auto auto 10px;
     grid-template-columns: 3rem auto max-content 10px;
     user-select: none;
-}
-
-/* .AddOnTick {
-    appearance: none;
-    align-self: center;
-    width: 1.2rem;
-    height: 1.2rem;
-    padding: 0;
-    margin-top: 5px;
-    margin-left: 1rem;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.AddOnTick:checked {
-    background: hsl(243, 100%, 62%);
-}
-
-.AddOnTick:checked::before {
-    content: '✓';
-    font-weight: 700;
-    color: white;
-} */
+} 
 
 .AddOnTick {
     grid-row: 1 / span 4;
@@ -236,6 +217,85 @@ label {
     display: flex;
     align-items: center;
     z-index: 1;
+}
+
+.Preview {
+    margin-top: 25px;
+}
+
+.PreviewPlan {
+    display: grid;
+    grid-template-columns: auto min-content;
+    background: hsl(230, 75%, 98%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 15px 15px 0;
+}
+
+.PreviewPlan h4 {
+    color: hsl(213, 96%, 18%);
+    font-size: 0.9rem;
+}
+
+.PreviewPlan h4:last-of-type {
+    grid-column: 2;
+} 
+
+.PreviewPlan button {
+    border: none;
+    background: none;
+    color: hsl(230, 7%, 51%);
+    text-decoration: underline;
+    font-size: 0.9rem;
+    grid-column: 1;
+    justify-self: start;
+    padding: 0;
+}
+
+.PreviewAddons {
+    display: grid;
+    background: hsl(230, 75%, 98%);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+} 
+
+.PreviewAddons::before {
+    content: '';
+    height: 1px; width: 100%;
+    border-top: 1px solid hsl(229, 24%, 87%);
+    padding-top: 5px;
+}
+
+.PreviewAddons div {
+    display: grid;
+    grid-template-columns: auto min-content;
+}
+
+.PreviewAddons p {
+    margin: 5px 0;
+    text-transform: lowercase;
+}
+
+.PreviewAddons p::first-letter {
+    text-transform: uppercase;
+}
+
+.PreviewAddons p:last-of-type {
+    color: hsl(213, 96%, 18%);
+}
+
+.PreviewTotal {
+    display: grid;
+    grid-template-columns: auto min-content;
+    align-items: center;
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+.PreviewTotal h3 {
+    color: hsl(243, 100%, 62%);
 }
 
 @media only screen and (min-width: 1080px) {

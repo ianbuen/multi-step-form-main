@@ -1,5 +1,5 @@
 import "../styles/FormGroup.css";
-import { PlanSelect, InputField, ToggleSwitch, AddOnsSelect } from "./FormControls";
+import { PlanSelect, InputField, ToggleSwitch, AddOnsSelect, Preview } from "./FormControls";
 
 import arcade from "../assets/images/icon-arcade.svg";
 import advanced from "../assets/images/icon-advanced.svg";
@@ -119,11 +119,16 @@ const AddOns = () => {
 };
 
 const Summary = () => {
+
+  const [{plan}] = useStateValue();
+
   return (
     <div className="Summary">
       <form>
         <h2>Finishing up</h2>
         <p>Double-check everything looks OK before confirming.</p>
+
+        <Preview plan={plan} />
       </form>
     </div>
   );

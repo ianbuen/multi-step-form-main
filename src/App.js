@@ -16,8 +16,7 @@ function App() {
         <Sidebar>
           <FormProgress />
         </Sidebar>
-      {/* <p style={{color: 'white', backdropFilter: 'blur(100px)', position: 'absolute', left: 0, top: 0}} >{`${JSON.stringify(state)}\n`}</p> */}
-      <pre style={{zIndex: 5, whiteSpace: "pre-line", color: 'black', background: "white", position: 'absolute', left: 0, bottom: '5%'}} >{`${JSON.stringify(state, undefined, 2)}\n`}</pre>
+        <pre style={{zIndex: 5, whiteSpace: "pre-wrap", color: 'black', background: "white", position: 'absolute', left: 0, top: '100%'}} >{`${JSON.stringify(state, undefined, 2)}\n`}</pre>
       </header>
 
       <main>

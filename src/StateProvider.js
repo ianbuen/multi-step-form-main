@@ -5,8 +5,19 @@ export const StateContext = createContext();
 
 // State
 export const initialState = {
-    step: 3,
-    info: {},
+    // step: 1,
+    // info: {},
+    // plan: {
+    //     isYearly: false,
+    //     addons: [],
+    // },
+
+    "step": 1,
+    "info": {
+        "name": "Ian",
+        "email": "ian@mail.com",
+        "telephone": "69420"
+    },
     plan: {
         isYearly: false,
         addons: [],
