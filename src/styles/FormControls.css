@@ -217,6 +217,7 @@ label {
     display: flex;
     align-items: center;
     z-index: 1;
+    color: hsl(243, 100%, 62%);
 }
 
 .Preview {
@@ -309,7 +310,7 @@ label {
     }
 
     .CardSelection {
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(3, 1fr);
         column-gap: 15px;
     }
 
@@ -328,6 +329,33 @@ label {
 
     .ToggleSwitch {
         margin: 30px 0;
+    }
+
+    .Addons {
+        grid-template-columns: auto;
+    }
+
+    .AddOn {
+        margin-bottom: 10px;
+        grid-template-rows: 15px auto auto 15px;
+        grid-template-columns: 4rem auto max-content 15px;
+    }
+
+    .AddOnName {
+        font-size: 1rem;
+    }
+
+    .AddOnTick {
+        padding: 10px 20px;
+    }
+
+    .AddOnTick::before {
+        height: 1.3rem; width: 1.3rem;
+    }
+
+    .AddOnDesc, .AddOnPrice {
+        font-size: 0.9rem;
+        margin: 0;
     }
 }
 

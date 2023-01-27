@@ -148,7 +148,7 @@ export const AddOnsSelect = ({items, yearly}) => {
     };
 
     return (
-        <div className="CardSelection" ref={refCardSelection}>
+        <div className="CardSelection Addons" ref={refCardSelection}>
             {items?.map((item, index) => (
             <AddOnCard key={`card-${index}`} addon={item.name} desc={item.desc} price={item.price} yearly={yearly} onChange={() => {handleChange(index)}} />
           ))}
@@ -166,7 +166,9 @@ export const ToggleSwitch = ({checked, onChange, children}) => {
     );
 };
 
-export const Preview = ({plan: {name, isYearly, price, addons}}) => {
+export const Preview = () => {
+
+    const [{plan: {name, isYearly, price, addons}, step}, dispatch] = useStateValue();
 
     const getTotal = () => {
         const addonsTotal = addons.reduce((total, addon) => total + addon.price, 0);
@@ -175,12 +177,23 @@ export const Preview = ({plan: {name, isYearly, price, addons}}) => {
         return (basePlan + addonsTotal) * (isYearly ? 10 : 1);
     }
 
+    const handleClick = (e) => {
+
+        e.preventDefault();
+
+        dispatch({
+            type: "SET_STEP",
+            step: 2,
+        });
+
+    }
+
     return (
         <div className="Preview">
           <div className="PreviewPlan">
-            <h4>{`${name} ${isYearly ? '(Yearly)' : '(Monthly)'}`}</h4>
-            <button>Change</button>
-            <h4>{isYearly ? `$${price * 10}/yr` : `$${price}/mo`}</h4>
+            <h4>{name ? `${name} ${isYearly ? '(Yearly)' : '(Monthly)'}` : ''}</h4>
+            <button onClick={handleClick} >Change</button>
+            <h4>{isYearly ? `$${price * 10 || 0}/yr` : `$${price || 0}/mo`}</h4>
           </div>
 
           <div className="PreviewAddons">
@@ -192,7 +205,7 @@ export const Preview = ({plan: {name, isYearly, price, addons}}) => {
 
           <div className="PreviewTotal">
             <p>Total {isYearly ? '(per year)' : '(per month)'}</p>
-            <h3>{`+$${getTotal()}/${isYearly ? 'yr' : 'mo' }`}</h3>
+            <h3>{`+$${getTotal() || 0}/${isYearly ? 'yr' : 'mo' }`}</h3>
           </div>
         </div>
     );

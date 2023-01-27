@@ -3,6 +3,8 @@ import "../styles/FormProgress.css";
 
 const FormStep = ({ value, text, isActive }) => {
 
+  const [{step}] = useStateValue();
+
   return (
     <div className={'FormStep'}>
       <h4 className={isActive ? "Active" : ""}>{value}</h4>

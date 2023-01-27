@@ -1,12 +1,14 @@
 .Form {
     display: grid;
+    grid-template-columns: 1rem auto 1rem;
 }
 
 .FormGroup {
     background: white; 
-    grid-column: 1;
-    margin: 0 20px;
-    padding: 25px;
+    grid-column: 2;
+    padding: 30px 20px;
+    width: fit-content;
+    justify-self: center;
 }
 
 .ButtonWrapper {
@@ -14,13 +16,11 @@
     background: hsl(231, 100%, 99%);
     width: 100%;
     padding: 15px;
-    /* display: flex;
-    justify-content: space-between; */
     display: grid;
     grid-template-columns: max-content auto max-content;
     align-items: center;
     bottom: 0; 
-    grid-column: 1;
+    grid-column: 2;
 }
 
 .NextButton {
@@ -28,17 +28,74 @@
     justify-self: end;
 }
 
+.Confirmation {
+    border-radius: 10px;
+    display: grid;
+    padding: 10vh 20px;
+    place-items: center;
+    text-align: center;
+    background: white;
+    grid-column: 2;
+    animation: fade 400ms linear;
+} 
+
+.Confirmation img {
+    width: 64px;
+    margin-bottom: 1.25rem;
+    animation: pulse 800ms linear;
+    transform-origin: bottom center;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 1079px) {
+    .FormGroup {
+      width: 60vmax;
+    }
+  }
+
 @media only screen and (min-width: 1080px) {
 
     .Form {
         height: 100%;
+        grid-template-rows: 1fr 1fr;
     }
 
     .FormGroup {
         width: 100%;
         margin: 0;
-        padding: 2vw 0;
+        padding: 2vw 0 0;
+        grid-row: 1 / span 2;
     }   
+    
+    .Confirmation {
+        font-size: 1.1rem;
+        grid-template-columns: 500px;
+        grid-template-rows: auto repeat(3, min-content) auto;
+        grid-auto-rows: min-content;
+        grid-row: 1 / span 2;
+        height: 100%;
+        padding: 0;
+        z-index: 1;
+    }
+
+    .Confirmation img {
+        width: 96px;
+        grid-row: 2;
+    }
+
+    .Confirmation h2 {
+        font-size: 2rem;
+        grid-row: 3;
+    }
+    
+    .Confirmation p {
+        grid-row: 4;
+    }
 
     .ButtonWrapper {
         position: relative;
@@ -47,5 +104,6 @@
         background: none;
         padding-right: 0;
         padding-left: 0;
+        grid-row: 2;
     }
 }

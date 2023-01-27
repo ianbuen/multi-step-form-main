@@ -14,9 +14,15 @@ p {
     box-shadow: 0 10px 15px #0001;
 }
 
-.PersonalInfo form {
+@keyframes fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.FormGroup form {
     display: flex;
     flex-direction: column;
+    animation: fade 400ms linear;
 }
 
 @media only screen and (min-width: 1080px) {
@@ -26,7 +32,7 @@ p {
     }
     
     .FormGroup {
-        min-width: 600px;
+        min-width: 500px;
         box-shadow: none;
-    }
+    } 
 }

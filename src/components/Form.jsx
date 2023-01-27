@@ -1,7 +1,7 @@
 import { useStateValue } from "../StateProvider";
 import "../styles/Form.css";
 import { BackLink, NextButton } from "./FormControls";
-import { FormGroup } from "./FormGroup";
+import { FormGroup, Confirmation } from "./FormGroup";
 
 export const Form = () => {
 
@@ -10,7 +10,7 @@ export const Form = () => {
   const nextStep = () => {
     dispatch({
       type: "SET_STEP",
-      step: step <= 3 ? step + 1 : step,
+      step: step <= 4 ? step + 1 : step,
     });
   }
 
@@ -23,12 +23,12 @@ export const Form = () => {
 
   return (
     <div className="Form">
-      <FormGroup />
+      {step === 5 ? <Confirmation /> : <FormGroup /> }
 
-      <div className="ButtonWrapper">
+      {step < 5 && <div className="ButtonWrapper">
         <BackLink text="Go Back" onClick={previousStep} />
         <NextButton text="Next Step" onClick={nextStep} />
-      </div>
+      </div>}
     </div>
   );
 };

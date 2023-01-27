@@ -4,6 +4,8 @@ import { PlanSelect, InputField, ToggleSwitch, AddOnsSelect, Preview } from "./F
 import arcade from "../assets/images/icon-arcade.svg";
 import advanced from "../assets/images/icon-advanced.svg";
 import pro from "../assets/images/icon-pro.svg";
+import thank from "../assets/images/icon-thank-you.svg";
+
 import { useStateValue } from "../StateProvider";
 
 const PersonalInfo = ({children}) => {
@@ -120,15 +122,13 @@ const AddOns = () => {
 
 const Summary = () => {
 
-  const [{plan}] = useStateValue();
-
   return (
     <div className="Summary">
       <form>
         <h2>Finishing up</h2>
         <p>Double-check everything looks OK before confirming.</p>
 
-        <Preview plan={plan} />
+        <Preview />
       </form>
     </div>
   );
@@ -156,3 +156,18 @@ export const FormGroup = () => {
     </div>
   );
 };
+
+export const Confirmation = () => {
+
+  return (
+    <div className="Confirmation">
+        <img src={thank} alt="'thank you' icon" />
+
+        <h2>Thank you!</h2>
+
+        <p>Thanks for confirming your subscription! We hope you have fun 
+        using our platform. If you ever need support, please feel free 
+        to email us at support@loremgaming.com.</p>
+    </div>
+  );
+}

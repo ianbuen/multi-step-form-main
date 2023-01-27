@@ -2,6 +2,12 @@
     background: hsl(206, 94%, 87%);
     border-color: hsl(206, 94%, 87%);
     color: hsl(213, 96%, 18%);
+    animation: fadeBG 500ms linear;
+}
+
+@keyframes fadeBG {
+    0% { background: hsla(206, 94%, 87%, 0%); }
+    90% { background: hsla(206, 94%, 87%, 100%); }
 }
 
 .FormProgress {
@@ -13,19 +19,19 @@
 
 .FormStep {
     color: white;
-    display: grid; 
+    display: grid;
 }
 
 .FormStep h4 {
     border: 1px solid white;
-    border-radius: 50%; 
+    border-radius: 50%;
     display: inline;
     grid-column: 1;
     grid-row: 1 / span 2;
-    height: 2.1rem; 
-    line-height: 2rem; 
-    text-align: center; 
-    width: 2.1rem; 
+    height: 2.1rem;
+    line-height: 2rem;
+    text-align: center;
+    width: 2.1rem;
 }
 
 .FormStep :is(h5, h6) {
@@ -45,7 +51,7 @@
         align-items: center;
         column-gap: 1rem;
         grid-template-rows: 1fr 1fr;
-        grid-template-columns: auto 1fr; 
+        grid-template-columns: auto 1fr;
         margin: 0 0 1rem;
     }
 
@@ -58,7 +64,7 @@
         word-spacing: 0.15rem;
         font-size: 0.9rem;
     }
-    
+
     .FormStep h6 {
         display: block;
         color: hsl(228, 100%, 84%);

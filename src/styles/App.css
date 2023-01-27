@@ -8,7 +8,7 @@
       padding: 15px;
       border-radius: 15px;
       box-shadow: 0 10px 15px #0001;
-      grid-template-columns: max-content 4vw max-content 4vw;
+      grid-template-columns: max-content 5vw max-content 5vw;
   }
 
   header {
@@ -22,7 +22,7 @@
 
   footer {
       position: absolute;
-      bottom: 10px;
+      bottom: 2%;
       justify-self: center;
   }
 }
