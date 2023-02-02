@@ -9,7 +9,7 @@ export const InputField = ({type, name, label, placeholder, onChange, value}) =>
     return (
         <div className="input-wrapper">
             <label htmlFor={name}>{label}</label>
-            <input type={type} name={name} placeholder={placeholder} onChange={onChange} value={value} required={true} />
+            <input type={type} id={name} name={name} placeholder={placeholder} onChange={onChange} value={value} required={true} />
             <span></span>
         </div>
     );
