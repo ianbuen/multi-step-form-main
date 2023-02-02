@@ -36,6 +36,7 @@ export const Form = () => {
   }
 
   return (
+    <><h1>.</h1>
     <div className="Form" ref={form}>
       {step === 5 ? <Confirmation /> : <FormGroup /> }
 
@@ -44,5 +45,6 @@ export const Form = () => {
         <NextButton text="Next Step" onClick={nextStep} />
       </div>}
     </div>
+    </>
   );
 };
