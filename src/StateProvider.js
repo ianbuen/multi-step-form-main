@@ -5,29 +5,14 @@ export const StateContext = createContext();
 
 // State
 export const initialState = {
-    step: 1,
-    info: {
-        "email": "ian@mail.com",
-        "telephone": "69420"
-    },
+    step: 1, 
     plan: {
         name: "Arcade",
         price: "9",
         index: 0,
         isYearly: false,
         addons: [],
-    },
-
-    // "step": 1,
-    // "info": {
-    //     "name": "Ian",
-    //     "email": "ian@mail.com",
-    //     "telephone": "69420"
-    // },
-    // plan: {
-    //     isYearly: false,
-    //     addons: [],
-    // },
+    }, 
 };
 
 // Wrap the app and provide the data layer
