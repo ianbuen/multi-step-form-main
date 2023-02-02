@@ -7,14 +7,17 @@ export const InputField = ({type, name, label, placeholder, onChange, value}) =>
     value = value ? value : '';
 
     return (
-        <>
+        <div className="input-wrapper">
             <label htmlFor={name}>{label}</label>
-            <input type={type} name={name} placeholder={placeholder} onChange={onChange} value={value} />
-        </>
+            <input type={type} name={name} placeholder={placeholder} onChange={onChange} value={value} required={true} />
+            <span></span>
+        </div>
     );
 };
 
-export const NextButton = ({ text, onClick }) => { 
+export const NextButton = ({ text, onClick }) => {
+
+    
 
     return (
         <>
@@ -56,14 +59,13 @@ export const PlanSelect = ({items, yearly}) => {
 
     const refCardSelection = useRef(); 
 
-
     useEffect(() => {
         const {current: {children}} = refCardSelection;
 
         children[idPlan]?.classList.add("Selected");
-    }, []);
+    }, [idPlan]);
 
-
+    
     const handleClick = (evt, index) => {
         const {currentTarget: selectedCard} = evt;
         const allCards = [...selectedCard.parentElement.children];
@@ -125,7 +127,7 @@ export const AddOnsSelect = ({items, yearly}) => {
             checkbox.checked = true;
         });
 
-    }, []);
+    }, [addons]);
 
 
     const handleChange = (index) => {
@@ -168,7 +170,7 @@ export const ToggleSwitch = ({checked, onChange, children}) => {
 
 export const Preview = () => {
 
-    const [{plan: {name, isYearly, price, addons}, step}, dispatch] = useStateValue();
+    const [{plan: {name, isYearly, price, addons}}, dispatch] = useStateValue();
 
     const getTotal = () => {
         const addonsTotal = addons.reduce((total, addon) => total + addon.price, 0);

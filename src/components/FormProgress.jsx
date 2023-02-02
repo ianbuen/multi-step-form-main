@@ -7,7 +7,7 @@ const FormStep = ({ value, text, isActive }) => {
 
   return (
     <div className={'FormStep'}>
-      <h4 className={isActive ? "Active" : ""}>{value}</h4>
+      <h4 className={isActive || (value === 4 && step > 3) ? "Active" : ""}>{value}</h4>
       <h6>Step {value}</h6>
       <h5>{text}</h5>
     </div>

@@ -8,12 +8,14 @@ import thank from "../assets/images/icon-thank-you.svg";
 
 import { useStateValue } from "../StateProvider";
 
-const PersonalInfo = ({children}) => {
+const PersonalInfo = () => {
 
   const [{ info }, dispatch] = useStateValue();
 
-  const handleChange = ({target: {name, value}}) => {
+  const handleChange = ({target}) => {
  
+      const {name, value} = target;
+
       let newInfo = {...info};
       newInfo[name] = value;
 

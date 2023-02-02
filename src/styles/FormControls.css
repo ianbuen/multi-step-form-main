@@ -1,3 +1,8 @@
+.input-wrapper {
+    display: grid;
+    position: relative;
+}
+
 input {
     margin-bottom: 8px;
     font-weight: 500;
@@ -5,6 +10,24 @@ input {
     border: 1px solid hsl(229, 24%, 87%);
     padding: 10px 15px;
 }
+
+.input-invalid, .input-invalid:focus {
+    outline: 1px solid red;
+}
+
+.input-invalid ~::before {
+    color: red;
+    font-size: 0.8rem;
+    font-weight: 500;
+    content: 'This field is required.';
+    position: absolute;
+    top: 10%; right: 0;
+    animation: pulse 100ms linear;
+}
+
+input:focus {
+    outline: 1px solid hsl(243, 100%, 62%);
+} 
 
 label {
     color: hsl(213, 96%, 18%);
@@ -356,6 +379,10 @@ label {
     .AddOnDesc, .AddOnPrice {
         font-size: 0.9rem;
         margin: 0;
+    }
+
+    .input-invalid ~::before {
+        top: 20%;
     }
 }
 

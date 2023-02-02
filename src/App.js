@@ -6,7 +6,8 @@ import { useStateValue } from "./StateProvider";
 
 function App() {
 
-  const [state] = useStateValue();
+  // Test
+  // const [state] = useStateValue();
 
 
   return (
@@ -16,6 +17,7 @@ function App() {
         <Sidebar>
           <FormProgress />
         </Sidebar>
+        {/* Test */}
         {/* <pre style={{zIndex: 5, whiteSpace: "pre-wrap", color: 'black', background: "white", position: 'absolute', left: 0, top: '100%'}} >{`${JSON.stringify(state, undefined, 2)}\n`}</pre> */}
       </header>
 
