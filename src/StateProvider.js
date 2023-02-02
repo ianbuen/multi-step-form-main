@@ -6,6 +6,7 @@ export const StateContext = createContext();
 // State
 export const initialState = {
     step: 1, 
+    info: {},
     plan: {
         name: "Arcade",
         price: "9",
